@@ -15,6 +15,10 @@ class PhotosViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var photos: NSDictionary? = NSDictionary()
     
+    override func viewWillAppear(animated: Bool) {
+        tableView.rowHeight = 320
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

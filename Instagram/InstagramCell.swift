@@ -10,6 +10,9 @@ import UIKit
 
 class InstagramCell: UITableViewCell {
 
+    // MARK: Properties
+    @IBOutlet weak var photoView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
