@@ -62,14 +62,13 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         let vc = segue.destinationViewController as! PhotoDetailsViewController
         let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)
         
+        // Question: Why does the URL have to be accessed like this? PITA
         let photo = photos![indexPath!.row]
         let image = photo["images"]
         let standard_resolution = image!["standard_resolution"]
         let url = standard_resolution!!["url"] as! String
         
         vc.photoUrl = NSURL(string: url)!
-        
-        
     }
     
     // MARK: UITableViewDataSource
@@ -94,5 +93,10 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
             return 0
         }
     }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+
 }
 
