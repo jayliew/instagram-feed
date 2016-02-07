@@ -7,20 +7,24 @@
 //
 
 import UIKit
+import AFNetworking
 
-class PhotosViewController: UIViewController {
+class PhotosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: Properties
     
     @IBOutlet weak var tableView: UITableView!
-    var photos: NSDictionary? = NSDictionary()
+    var photos: [NSDictionary]?
     
     override func viewWillAppear(animated: Bool) {
-        tableView.rowHeight = 320
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = 320
         
         let clientId = "e05c462ebd86446ea48a5af73769b602"
         let url = NSURL(string:"https://api.instagram.com/v1/media/popular?client_id=\(clientId)")
@@ -36,8 +40,10 @@ class PhotosViewController: UIViewController {
                 if let data = dataOrNil {
                     if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
                         data, options:[]) as? NSDictionary {
-                            NSLog("response: \(responseDictionary)")
-                            self.photos = responseDictionary
+                            //NSLog("response: \(responseDictionary)")
+                            self.photos = responseDictionary["data"] as? [NSDictionary]
+                            
+                            self.tableView.reloadData()
                     }
                 }
         });
@@ -50,6 +56,27 @@ class PhotosViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: UITableViewDataSource
     
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("com.jayliew.InstagramCell", forIndexPath: indexPath) as! InstagramCell
+        
+        let imageUrl = photos![indexPath.row]["images"]!["standard_resolution"]!!["url"]!
+        print(imageUrl)
+        
+        cell.photoView.setImageWithURL(NSURL(string: imageUrl as! String)!)
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let photos = photos as [NSDictionary]? {
+            print("rows: " + String(photos.count))
+            return photos.count
+        }else{
+            print("rows: ZERO")
+            return 0
+        }
+    }
 }
 
