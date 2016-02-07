@@ -56,13 +56,29 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let vc = segue.destinationViewController as! PhotoDetailsViewController
+        let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)
+        
+        let photo = photos![indexPath!.row]
+        let image = photo["images"]
+        let standard_resolution = image!["standard_resolution"]
+        let url = standard_resolution!!["url"] as! String
+        
+        vc.photoUrl = NSURL(string: url)!
+        
+        
+    }
+    
     // MARK: UITableViewDataSource
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("com.jayliew.InstagramCell", forIndexPath: indexPath) as! InstagramCell
         
         let imageUrl = photos![indexPath.row]["images"]!["standard_resolution"]!!["url"]!
-        print(imageUrl)
+//        print(imageUrl)
         
         cell.photoView.setImageWithURL(NSURL(string: imageUrl as! String)!)
         

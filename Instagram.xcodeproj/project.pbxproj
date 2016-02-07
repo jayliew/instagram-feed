@@ -14,6 +14,7 @@
 		E1766E931C62CE4B00DDA5F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1766E921C62CE4B00DDA5F7 /* Assets.xcassets */; };
 		E1766E961C62CE4B00DDA5F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1766E941C62CE4B00DDA5F7 /* LaunchScreen.storyboard */; };
 		E1C3247F1C64209D00A18151 /* InstagramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3247E1C64209D00A18151 /* InstagramCell.swift */; };
+		E1E530811C6705D000CE044C /* PhotoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E530801C6705D000CE044C /* PhotoDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		E1766E951C62CE4B00DDA5F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1766E971C62CE4B00DDA5F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1C3247E1C64209D00A18151 /* InstagramCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramCell.swift; sourceTree = "<group>"; };
+		E1E530801C6705D000CE044C /* PhotoDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				E1766E8B1C62CE4B00DDA5F7 /* AppDelegate.swift */,
 				E1766E8D1C62CE4B00DDA5F7 /* PhotosViewController.swift */,
 				E1766E8F1C62CE4B00DDA5F7 /* Main.storyboard */,
+				E1E530801C6705D000CE044C /* PhotoDetailsViewController.swift */,
 				E1C3247E1C64209D00A18151 /* InstagramCell.swift */,
 				E1766E921C62CE4B00DDA5F7 /* Assets.xcassets */,
 				E1766E941C62CE4B00DDA5F7 /* LaunchScreen.storyboard */,
@@ -213,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1E530811C6705D000CE044C /* PhotoDetailsViewController.swift in Sources */,
 				E1766E8E1C62CE4B00DDA5F7 /* PhotosViewController.swift in Sources */,
 				E1766E8C1C62CE4B00DDA5F7 /* AppDelegate.swift in Sources */,
 				E1C3247F1C64209D00A18151 /* InstagramCell.swift in Sources */,
